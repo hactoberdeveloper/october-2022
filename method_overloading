@@ -1,0 +1,48 @@
+
+class Poo
+{
+	int num1;
+	int num2;
+	String operation;
+	public Poo() 
+	{
+		num1 = 0;
+		num2 = 0;
+		operation = "Nothing";
+	}
+	public Poo(int i) 
+	{
+		num1 = i;
+		num2 = 0;
+		operation = "Nothing";
+	}
+	public Poo(int i, int j) 
+	{
+		num1 = i;
+		num2 = j;
+		operation = "Nothing";
+		System.out.println(i+j);
+	}
+	public Poo(int i, int j, String op) 
+	{
+		num1 = i;
+		num2 = j;
+		operation = op;
+	}
+	public void add(int i, int j) 
+	{
+		System.out.println(i+j);
+	}
+	public void add(int i,int j,int k) 
+	{
+		System.out.println(i+j+k);
+	}
+}
+public class MethodOerloading{
+	public static void main(String[] args){
+	Poo obj = new Poo(4,6);
+	
+	obj.add(200, 1234);
+	obj.add(2,4,0);
+   }
+ }
