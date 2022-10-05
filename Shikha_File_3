@@ -1,0 +1,202 @@
+ #include <iostream>
+#include <string.h>
+#include <fstream>
+#include <conio.h>
+using namespace std;
+
+int i, n;
+ifstream fin;
+ofstream fout;
+fstream file,copyfile;
+
+	class stock
+	{
+		int product_code;
+		char Name[20];
+		float Rate;
+		int qty_available;
+		double cgst, sgst;
+
+	public:
+		void menu()
+		{
+			stock obj_s,obj_f;
+			int j,d;
+			system("cls");
+			cout << "\n\t\t   STOCK MANAGEMENT \n";
+			cout << "=============================================================";
+			cout << "\n\n\t\t   1. Shop Menu\n\n\t\t   2. Factory Menu\n\n\t\t  ";
+			cout << "\n\n=============================================================\n";
+			cout << "\n\nEnter Your Choice:";
+			cin >> j;
+			if (j == 1)
+			{
+				cout << "\n Shop Menu ";
+				cout << "\n\n\t\t   1. Current status of information \n\n\t\t   2. Add more items \n\n\t\t  3. Modify \n\n\t\t  4. Delete \n\n\t\t  5. Find \n\n\t\t  ";
+				cout << "\n\n Enter Your Choice : ";
+				cin >> d;
+				switch (d)
+				{
+				case 1: obj_s.current_stock();
+					break;
+				case 2: obj_s.add_product();
+					break;
+				case 3: obj_s.modify_information();
+					break;
+				case 4: obj_s.delete_information();
+					break;
+				case 5: obj_s.find_product();
+					break;
+				default: cout << "\n Enter valid number ";
+					break;
+				}
+			}
+			if (j == 2)
+			{
+				cout << "\n Factory Menu ";
+				cout << "\n\n\t\t   1. Current status of information \n\n\t\t   2. Add more items \n\n\t\t  3. Modify \n\n\t\t  4. Delete \n\n\t\t  5. Find \n\n\t\t  ";
+				cout << "\n\n Enter Your Choice : ";
+				cin >> d;
+				switch (d)
+				{
+				case 1: obj_f.current_stock();
+					break;
+				case 2: obj_f.add_product();
+					break;
+				case 3: obj_f.modify_information();
+					break;
+				case 4: obj_f.delete_information();
+					break;
+				case 5: obj_f.find_product();
+					break;
+				default: cout << "\n Enter valid number ";
+					break;
+				}
+			}
+		}
+		void current_stock()
+		{
+			stock obj;
+			file.open("project.txt", ios::out);
+			while (file.read((char*)&obj, sizeof(obj)))
+				obj.show_information();
+			file.close();
+		}
+		void add_product()
+		{
+			file.seekg(0,ios::end);
+			p:
+			char choice = 'y';
+			stock obj;
+			file.open("project.txt", ios::out | ios::app);
+			cout << "\n Enter name of product :";
+			cin >> Name;
+		file<<Name<<endl;
+			cout << "\n Enter product code : ";
+			cin >> product_code;
+		file<< product_code<<endl;
+			cout << "\n Enter price : ";
+			cin >> Rate;
+		file<<Rate<<endl;
+			cout << "\n Enter the quantity of product : ";
+			cin >> qty_available;
+		file<<qty_available<<endl;
+			cout << "\n CGST : ";
+			cin >> cgst;
+		file<<cgst<<endl;
+			cout << "\n SGST : ";
+			cin >> sgst;
+		file<<sgst<<endl;
+		file<<endl;
+
+//			file.write((char*)&obj, sizeof(obj));
+			while (choice == 'y' || choice == 'Y')
+			{
+				cout << "do you want to add more items? y/n";
+				cin >> choice;
+				if (choice == 'y' || choice == 'Y')
+				{
+					goto p;
+//					file.write((char*)&obj, sizeof(obj));
+				}
+			}
+			file.close();
+		}
+		void show_information()
+		{
+			cout << "\n Product code : " << product_code;
+			cout << "\n Name : " << Name;
+			cout << "\n M.R.P : " << Rate;
+			cout << "\n Quantity : " << qty_available;
+			cout << "\n CGST : " << cgst;
+			cout << "\n SGST : " << sgst;
+
+		}
+		void modify_information()
+		{
+			stock obj;
+			int found = 0, position;
+			file.open("project.txt", ios::in | ios::app);
+			cout << "\n Enter product code of item to be edited : ";
+			cin >> product_code;
+			file.seekg(0);
+			file.seekp(0);
+			while (!found && file.read((char*)&obj, sizeof(obj)))
+			{
+				if (obj.return_product_code() == product_code)
+					found++;
+				if (found)
+				{
+					cout << "\n Enter details again... ";
+					obj.add_product();
+					position = (int)file.tellg() - sizeof(obj);
+					file.seekp(position);
+					file.write((char*)&obj, sizeof(obj));
+				}
+				else
+					cout << "\n No record matching for editing ";
+			}
+			file.close();
+		}
+		void delete_information()
+		{
+			stock obj;
+			int dele = 0,var;
+			file.open("project.txt", ios::in | ios::app);
+			copyfile.open("product_copy.txt", ios::out | ios::app);
+			cout << "\n Enter product code of item to be deleted : ";
+			cin >> product_code;
+			file.seekg(0);
+			copyfile.seekp(0);
+			while (file.read((char*)&obj, sizeof(obj)))
+			{
+				if (obj.return_product_code() != product_code)
+					copyfile.write((char*)&obj, sizeof(obj));
+				else
+					dele++;
+			}
+			if (!dele)
+				cout << "\n record match not found... ";
+			else
+				cout << "\n record deleted... ";
+			file.close();
+			copyfile.close();
+			var = rename("product.txt", "product_copy.txt");
+			file.close();
+			copyfile.close();
+		}
+		void find_product()
+		{
+
+		}
+		int return_product_code()
+		{
+			return product_code;
+		}
+	};
+int main()
+{
+	stock obj;
+	obj.menu();
+	return 0;
+}
