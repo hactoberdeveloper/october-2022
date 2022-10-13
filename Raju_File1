@@ -1,0 +1,25 @@
+import java.util.Scanner;
+import java.lang.Math;
+class RockPaperScissor
+{
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        String[] arr={"Scissor","Rock","Paper"};
+        System.out.println("Choose between 1-3");
+        System.out.println("1:Scissor \t 2:Rock \t 3:Paper");
+        int user=sc.nextInt();
+        int cpu=(int)(Math.random()*(3))+1;
+        System.out.println("CPU chose "+cpu+" "+arr[cpu-1]);
+        //If Both enter the same
+        if(cpu==user){
+            System.out.println("Draw");
+        }
+        else if(user-1==cpu||(user==1&&cpu==3)){
+            System.out.println("You Win");
+        }
+        else{
+            System.out.println("You Lose");
+        }
+    }
+}
