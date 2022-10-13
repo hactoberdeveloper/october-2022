@@ -1,0 +1,20 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int a,b;
+    cout << "Enter the value of a and b:\n";
+    cout << "\nValue of a = ";
+    cin >>a;
+    cout <<"\nValue of b = ";
+    cin >>b;
+    cout <<"\nsum = "<<(a+b);
+    cout <<"\nsub = "<<(a-b);
+    cout <<"\nmod = "<<(a%b);
+    cout <<"\nmul = "<<(a*b);
+    cout <<"\ndiv = "<<(a/b);
+
+    return 0;
+}
