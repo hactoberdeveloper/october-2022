@@ -1,0 +1,20 @@
+import java.util.Scanner;
+class Fibonnaci {
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);    
+        int a=0,b=1,sum=0;
+        int input=sc.nextInt();
+        System.out.print(a);
+        for(int i=1;i<input;i++)
+        {
+            int temp=b;
+            System.out.print(" "+b);
+            b=b+a;
+            a=temp;
+            sum=sum+temp;
+        }
+        System.out.println("\nSum = "+sum);
+        sc.close();
+    }
+}
