@@ -1,0 +1,305 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	int i=0;
+	while(i!=11)
+{
+		cout<<"\n\n----MENU----\n1.CREATE\n2.DISPLAY\n3.INSERT\n4.DELETE\n5.SEARCH\n6.MERGE\n7.SORT\n8.REMOVE DUPLICATE\n9.MAX & MIN\n10.SECOND LARGEST & SMALLEST\n11.EXIT\nenter:";
+		cin>>i;
+	if(i==1)
+	{//Create
+		int c1;
+		cout<<"Enter the size of array:";
+		cin>>c1;
+		int ca[c1];
+		cout<<"Array created...\nEnter values:";
+		for(int x=0;x<c1;x++)
+		{
+			cin>>ca[x];
+		}}
+	else if(i==2)
+	{//Display
+		
+		int da[5]={2,4,6,7,1};
+		for(int x=0;x<5;x++)
+		{
+			cout<<da[x]<<" ";
+		}}		
+	
+	else if(i==3)
+	{//Insert
+		
+		int ia[100];
+		cout<<"Enter size(max 100): ";
+		int is;
+		cin>>is;
+		cout<<"Enter Values:";
+		for(int x=0;x<is;x++)
+		{
+			cin>>ia[x];
+		}
+		int ito,iw;
+		cout<<"Where to insert:";
+		cin>>ito;
+		cout<<"Value: ";
+		cin>>iw;
+		for(int x=is;x>=ito-1;x--)
+		{
+				ia[x+1]=ia[x];
+					
+			
+		}
+		ia[ito-1]=iw;
+		for(int x=0;x<=is;x++)
+		{
+			cout<<ia[x]<<" ";
+		}
+		
+	}
+	
+	
+	else if(i==4)
+{//Delete
+	
+		int da[100];
+		cout<<"Enter size(max 100): ";
+		int ds;
+		cin>>ds;
+		cout<<"Enter Values:";
+		for(int x=0;x<ds;x++)
+		{
+			cin>>da[x];
+		}
+		int dto;
+		cout<<"What to delete: ";
+		cin>>dto;
+		for(int x=dto-1;x<ds;x++)
+		{
+				da[x]=da[x+1];
+					
+			
+		}
+		for(int x=0;x<ds-1;x++)
+		{
+			cout<<da[x]<<" ";
+		}
+		
+}
+
+	else if(i==5)
+	{//Search
+
+		int ss;
+		cout<<"Enter size of array: ";
+		cin>>ss;
+		int sa[ss],si,sc=0,sp;
+		cout<<"Enter Values:";
+		for(int x=0;x<ss;x++)
+		{
+			cin>>sa[x];
+		}
+		cout<<"What to Search: ";
+		cin>>si;
+		for(int x=0;x<ss;x++)
+		{
+			if(sa[x]==si)
+			{
+				sp=x+1;
+				sc=1;
+				break;
+			}
+		}
+		if(sc==1)
+		{cout<<"Your Element is at "<<sp <<" position\n\n";
+		}
+		else if(sc==0)
+		{
+			cout<<"Element not found\n\n";
+		}
+
+	}
+else if(i==6)
+{//Merge
+	int mas1,mas2;
+	int ma1[200],ma2[100];
+	cout<<"Enter size of Array 1(max 100):";
+	cin>>mas1;
+	cout<<"Enter size of Array 2(max 100):";
+	cin>>mas2;
+		cout<<"Enter Values for array1:";
+		for(int x=0;x<mas1;x++)
+		{
+			cin>>ma1[x];
+		}
+		cout<<"Enter Values for array2:";
+		for(int x=0;x<mas2;x++)
+		{
+			cin>>ma2[x];
+		}
+		
+		cout<<"Merging array 1 and array 2...\n";
+		
+		for(int x=mas1,y=0;x<mas1+mas2;x++,y++)
+		{
+			ma1[x]=ma2[y];
+		}
+			for(int x=0;x<=mas1+mas2-1;x++)
+		{
+			cout<<ma1[x]<<" ";
+		}
+	
+		
+}
+else if(i==7)
+{//Sort
+	
+	int ss,sw;
+	cout<<"Enter the size of array:";
+	cin>>ss;
+	int sa[ss];
+	cout<<"Enter values:";
+	for(int x=0;x<ss;x++)
+	{
+		cin>>sa[x];
+	}
+	
+	for(int i=0;i<ss;i++)
+	{
+		for(int j=0;j<ss;j++)
+		{
+			if(sa[i]<sa[j])
+			{
+				sw=sa[i];
+				sa[i]=sa[j];
+				sa[j]=sw;
+			}
+		}
+	}
+	
+	for(int x=0;x<ss;x++)
+	{
+		cout<<sa[x];
+	}
+	
+}
+else if(i==8)
+{//Remove Duplicate
+	int rs,rw,rc=0;
+	cout<<"Enter the size of array:";
+	cin>>rs;
+	int ra[rs];
+	cout<<"Enter values:";
+	for(int x=0;x<rs;x++)		//input
+	{
+		cin>>ra[x];
+	}
+	
+	for(int i=0;i<rs;i++)		//sorting
+	{
+		for(int j=0;j<rs;j++)
+		{
+			if(ra[i]<ra[j])
+			{
+				rw=ra[i];
+				ra[i]=ra[j];
+				ra[j]=rw;
+			}
+		}
+	}
+	
+	
+	for(int x=0;x<rs;x++)		//display
+	{
+		cout<<ra[x];
+	}
+	
+	for(int x=0;x<rs;x++)
+	{
+		if(ra[x-1]==ra[x])
+		{
+			for(int y=x-1;y<rs;y++)
+			{	ra[y]=ra[y+1];		}
+		rc++;
+		}
+		
+	}
+	cout<<"\n\n";
+	for(int x=0;x<=rs-rc+1;x++)
+	{
+		cout<<ra[x];
+	}
+	
+}
+
+else if(i==9)
+{//Max & Min
+	int ms,mw;
+	cout<<"Enter the size of array:";
+	cin>>ms;
+	int ma[ms];
+	cout<<"Enter values:";
+	for(int x=0;x<ms;x++)		//input
+	{
+		cin>>ma[x];
+	}
+	
+	for(int i=0;i<ms;i++)		//sorting
+	{
+		for(int j=0;j<ms;j++)
+		{
+			if(ma[i]<ma[j])
+			{
+				mw=ma[i];
+				ma[i]=ma[j];
+				ma[j]=mw;
+			}
+		}
+	}
+	cout<<"Min: "<<ma[0]<<"\nMax: "<<ma[ms-1]<<endl;
+	
+}
+else if(i==10)
+{//Second largest and smallest
+	int ss,sw;
+	cout<<"Enter the size of array:";
+	cin>>ss;
+	int sa[ss];
+	cout<<"Enter values:";
+	for(int x=0;x<ss;x++)		//input
+	{
+		cin>>sa[x];
+	}
+	
+	for(int i=0;i<ss;i++)		//sorting
+	{
+		for(int j=0;j<ss;j++)
+		{
+			if(sa[i]<sa[j])
+			{
+				sw=sa[i];
+				sa[i]=sa[j];
+				sa[j]=sw;
+			}
+		}
+	}
+	int x=0,c=1;
+	while(sa[x]==sa[x+1])
+	{
+		
+		c++;
+		x++;
+	}
+	cout<<"Second Min: "<<sa[c]<<endl;
+	
+	x=ss,c=ss-1;
+	while(sa[x]==sa[x+1])
+	{
+		
+		c--;
+		x--;
+	}
+	cout<<"Second Max: "<<sa[c]<<endl;
+	
+}
+}}
