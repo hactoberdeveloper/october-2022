@@ -1,0 +1,79 @@
+#include <iostream>
+#include <stdlib.h>
+#include <ctime>
+using namespace std;
+
+int main()
+{
+ srand (time(NULL));
+ int computer = rand() % 3+1;
+ int user = 0;
+
+ string roc = "1.rocks";
+ string pap = "2.paper";
+ string sci = "3.scissors";
+
+ cout << "GAME!! Rock Paper Scissors GAME!!"<<endl;
+
+ cout <<roc<<endl;
+ cout <<pap<<endl;
+ cout <<sci<<endl;
+
+ cout <<"choose!!"<<endl;
+ cin >> user;
+ cout <<"You chose:"<<endl;
+
+    switch (user)
+    {
+    case 1:
+        cout <<roc<<endl;
+    break;
+    case 2:
+        cout <<pap<<endl;
+    break;
+    case 3:
+        cout <<sci<<endl;
+    break;
+    default:
+        cout <<"Invalid option"<<endl;
+
+    }
+    cout <<"comp chose :"<<endl;
+
+    switch (computer)
+    {
+    case 1:
+        cout <<roc<<endl;
+    break;
+    case 2:
+        cout <<pap<<endl;
+    break;
+    case 3:
+        cout <<sci<<endl;
+    break;
+    default:
+        cout <<"Invalid option\n";
+    }
+    if (user == computer)
+    {
+        cout <<"Its a draw!!☺☻♥";
+    }
+    else if (user==1 && computer==3)
+    {
+        cout <<"You won!! congrats!!♦♠♦♠";
+    }
+    else if (user==2 && computer==1)
+    {
+        cout <<"You won!! congrats!!♦♠♦♠";
+    }
+    else if (user==3 && computer==2)
+    {
+        cout <<"You won!! congrats!!♦♠♦♠";
+
+    }
+    else
+    {
+        cout <<"Computer wins!!◘◘◘";
+    }
+    return 0;
+    }
