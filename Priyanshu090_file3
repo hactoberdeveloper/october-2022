@@ -1,0 +1,40 @@
+#include<iostream>
+using namespace std;
+
+class complex
+{
+    int x;
+    int y;
+public:
+        void inp()
+        {
+            cout<<"Enter x and y";
+            cin>>x>>y;
+        }
+    complex operator + (complex obj)
+    {
+        complex A;
+        A.x=x+obj.x;
+        A.y=y+obj.y;
+        return A;
+    }
+    void print()
+    {
+        cout<<x<<"+"<<y<<"i"<<endl;
+
+    }
+};
+int main()
+{
+    complex x1,y1;
+    complex sum;
+    x1.inp();
+    y1.inp();
+    sum= x1+y1;
+    cout<<"Values Entered"<<endl;
+    x1.print();
+    y1.print();
+    cout<<"Add"<<endl;
+    sum.print();
+    return 0;
+}
