@@ -1,0 +1,55 @@
+class RotatedArray
+{
+    public static void main(String[] args) 
+    {
+        int[] arr={1,2,3,4,5,3,1};
+        int toFind=3;
+        System.out.println("Code Started");
+        System.out.println(findPivot(arr));
+    } 
+
+    // static public int search(int[] nums, int target) {
+    //     int value=findPivot(nums);
+    //     int start=0,end=value;
+    //     int ans1=findAns(start,end,target,nums);
+    //     if(ans1!=-1) return ans1;
+    //     start=value+1;end=nums.length-1;
+    //     int ans2=findAns(start,end,target,nums);
+    //     if(ans2!=-1) return ans2;
+    //     return -1;
+    // }
+    
+    static public int findPivot(int[] arr){
+        int start=0,end=arr.length-1,peak=0;
+        while(start<=end){
+            int mid=start+(end-start)/2;
+            if(arr[mid]>arr[mid+1]&&arr[mid]>arr[mid-1]){
+                peak=mid;
+                break;
+            }
+            else if(arr[mid]<arr[mid+1]){
+                start=mid+1;
+            }
+            else{
+                end=mid-1;
+            }
+        }
+        return peak;
+    }
+    
+    public static int findAns(int start,int end,int target,int[] nums){
+        while(start<=end){
+            int mid=start+(end-start)/2;
+            if(nums[mid]==target){
+                return mid;
+            }
+            else if(nums[mid]>target){
+                end=mid-1;
+            }
+            else{
+                start=mid+1;
+            }
+        }
+        return -1;
+    }
+}
